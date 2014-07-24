@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+
+        html, body{
+            background-color: lightseagreen;
+        }
+
+        div{
+            position: absolute;
+            width: 5em;
+            height: 5em;
+            float: left;
+            border-radius: 1em 0 1em 0;
+            margin: 1em;
+        }
+        #first{
+            background-color: darkred;
+            left: 0;
+        }
+        #second{
+            background-color: darkgoldenrod;
+            left: 80px;
+        }
+
+    </style>
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+</head>
+<body>
+
+<p><button>Run</button></p>
+<div id="first"></div>
+<div id="second"></div>
+
+<script>
+
+    $("button").click(function(){
+        $("div#first").slideUp(300).delay(1000).fadeIn(400);
+        $("div#second").slideUp(300).fadeIn(400);
+    });
+
+</script>
+
+</body>
+</html>

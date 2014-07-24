@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+
+        body, html{
+            background-color: black;
+        }
+
+        div{
+            margin: 3px;
+            width: 3em;
+            height: 3em;
+            position: absolute;
+            left: 0;
+            top: 2em;
+            background-color: lightseagreen;
+            border-radius: 1.5em;
+            display: none;
+        }
+        div.newcolor{
+            background: lightcoral;
+        }
+
+    </style>
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+</head>
+<body>
+
+<button id="start">Start</button>
+<button id="stop">Stop</button>
+<div></div>
+
+<script>
+
+    $("#start").click(function(){
+        var myDiv = $("div");
+        myDiv.show("slow");
+        myDiv.animate({
+            left:"+=200"
+        }, 5000);
+        myDiv.queue(function(){
+            var that = $(this);
+            that.addClass("newcolor");
+            that.dequeue();
+        });
+        myDiv.animate({
+            left:"-=200"
+        }, 1500);
+        myDiv.queue(function(){
+            var that = $(this);
+            that.removeClass("newcolor");
+            that.dequeue();
+        });
+        myDiv.slideUp();
+    });
+
+    $("#stop").click(function(){
+       var myDiv = $("div");
+        myDiv.clearQueue();
+        myDiv.stop();
+    });
+</script>
+
+</body>
+</html>
